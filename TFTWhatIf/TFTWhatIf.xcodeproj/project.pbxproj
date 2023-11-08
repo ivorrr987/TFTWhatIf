@@ -14,6 +14,12 @@
 		98A2BBFC2AFBBDE3003C9835 /* TFTWhatIfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BBFB2AFBBDE3003C9835 /* TFTWhatIfTests.swift */; };
 		98A2BC062AFBBDE3003C9835 /* TFTWhatIfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC052AFBBDE3003C9835 /* TFTWhatIfUITests.swift */; };
 		98A2BC082AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC072AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift */; };
+		98A2BC182AFBBF8F003C9835 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98A2BC172AFBBF8F003C9835 /* Secret.plist */; };
+		98A2BC1A2AFBBFF5003C9835 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC192AFBBFF5003C9835 /* Bundle+Extension.swift */; };
+		98A2BC1C2AFBC07E003C9835 /* SummonerLeagueEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC1B2AFBC07E003C9835 /* SummonerLeagueEntry.swift */; };
+		98A2BC1E2AFBC09F003C9835 /* SummonerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */; };
+		98A2BC202AFBC0B9003C9835 /* TFTLeagueStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC1F2AFBC0B9003C9835 /* TFTLeagueStats.swift */; };
+		98A2BC232AFBC262003C9835 /* RiotAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC222AFBC262003C9835 /* RiotAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		98A2BC012AFBBDE3003C9835 /* TFTWhatIfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTWhatIfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2BC052AFBBDE3003C9835 /* TFTWhatIfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITests.swift; sourceTree = "<group>"; };
 		98A2BC072AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		98A2BC172AFBBF8F003C9835 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
+		98A2BC192AFBBFF5003C9835 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		98A2BC1B2AFBC07E003C9835 /* SummonerLeagueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerLeagueEntry.swift; sourceTree = "<group>"; };
+		98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInfo.swift; sourceTree = "<group>"; };
+		98A2BC1F2AFBC0B9003C9835 /* TFTLeagueStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTLeagueStats.swift; sourceTree = "<group>"; };
+		98A2BC222AFBC262003C9835 /* RiotAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiotAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				98A2BBEA2AFBBDE1003C9835 /* TFTWhatIfApp.swift */,
-				98A2BBEC2AFBBDE1003C9835 /* ContentView.swift */,
 				98A2BBEE2AFBBDE3003C9835 /* Assets.xcassets */,
+				98A2BC172AFBBF8F003C9835 /* Secret.plist */,
+				98A2BC162AFBBED7003C9835 /* Extension */,
+				98A2BC152AFBBEC0003C9835 /* Model */,
+				98A2BC212AFBC225003C9835 /* Manager */,
+				98A2BC142AFBBE81003C9835 /* Presentation */,
 				98A2BBF02AFBBDE3003C9835 /* Preview Content */,
 			);
 			path = TFTWhatIf;
@@ -125,6 +141,40 @@
 				98A2BC072AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift */,
 			);
 			path = TFTWhatIfUITests;
+			sourceTree = "<group>";
+		};
+		98A2BC142AFBBE81003C9835 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				98A2BBEC2AFBBDE1003C9835 /* ContentView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		98A2BC152AFBBEC0003C9835 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98A2BC1B2AFBC07E003C9835 /* SummonerLeagueEntry.swift */,
+				98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */,
+				98A2BC1F2AFBC0B9003C9835 /* TFTLeagueStats.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		98A2BC162AFBBED7003C9835 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				98A2BC192AFBBFF5003C9835 /* Bundle+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		98A2BC212AFBC225003C9835 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				98A2BC222AFBC262003C9835 /* RiotAPIManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A2BC182AFBBF8F003C9835 /* Secret.plist in Resources */,
 				98A2BBF22AFBBDE3003C9835 /* Preview Assets.xcassets in Resources */,
 				98A2BBEF2AFBBDE3003C9835 /* Assets.xcassets in Resources */,
 			);
@@ -258,7 +309,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				98A2BBED2AFBBDE1003C9835 /* ContentView.swift in Sources */,
+				98A2BC202AFBC0B9003C9835 /* TFTLeagueStats.swift in Sources */,
+				98A2BC1E2AFBC09F003C9835 /* SummonerInfo.swift in Sources */,
+				98A2BC1A2AFBBFF5003C9835 /* Bundle+Extension.swift in Sources */,
 				98A2BBEB2AFBBDE1003C9835 /* TFTWhatIfApp.swift in Sources */,
+				98A2BC232AFBC262003C9835 /* RiotAPIManager.swift in Sources */,
+				98A2BC1C2AFBC07E003C9835 /* SummonerLeagueEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +486,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +516,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
