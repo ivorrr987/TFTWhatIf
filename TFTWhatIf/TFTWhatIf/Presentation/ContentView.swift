@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     let apiKey1 = Bundle.main.riotAPIKey1
-    let apiKey2 = Bundle.main.riotAPIKey1
+    let apiKey2 = Bundle.main.riotAPIKey2
     
     @State var inputText: String = ""
     @State var isValid: Bool = false
@@ -21,7 +21,8 @@ struct ContentView: View {
             }
             Button {
                 Task {
-                    try await RiotAPIManager.shared.validateSummonerName(summonerName: inputText, apiKey: apiKey1)
+                    print(inputText.replacingOccurrences(of: " ", with: ""))
+                    try await RiotAPIManager.shared.validateSummonerName(summonerName: inputText, apiKey: apiKey2)
                 }
             } label: {
                 Text("validation")

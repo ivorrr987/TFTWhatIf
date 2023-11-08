@@ -22,7 +22,7 @@ final class RiotAPIManager {
 
 extension RiotAPIManager {
     func validateSummonerName(summonerName: String, apiKey: String) async throws -> Void {
-        guard let url = URL(string: "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/\(summonerName)?api_key=\(apiKey)") else {
+        guard let url = URL(string: "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/\(summonerName.urlEncoded)?api_key=\(apiKey)") else {
             print("-----bad URL!-----")
             throw RiotAPIError.invalidSummonerName
         }
