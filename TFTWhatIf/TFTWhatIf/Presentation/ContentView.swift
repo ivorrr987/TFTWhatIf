@@ -11,63 +11,76 @@ struct ContentView: View {
     let apiKey1 = Bundle.main.riotAPIKey1
     let apiKey2 = Bundle.main.riotAPIKey2
     
-    @State var inputText: String = ""
+    @State var summonerName: String = ""
     @State var isValid: Bool = false
+    
     @State var summonerId: String?
-    @State var tier: String = "아직 입력되지 않았습니다."
-    @State var rank: String = "아직 입력되지 않았습니다."
-    @State var wins: Int?
-    @State var losses: Int?
-    @State var summonerLeagueEntry: [SummonerLeagueEntry]?
+    
+    @State var summonerInfo: [SummonerInfoKey: Any]?
+    @State var leagueInfo: [LeagueInfoKey: Any]?
+    
+//    @State var summonerLeagueEntry: [SummonerLeagueEntry]?
+//    @State var tier: String = "아직 입력되지 않았습니다."
+//    @State var rank: String = "아직 입력되지 않았습니다."
+//    @State var wins: Int?
+//    @State var losses: Int?
+//
+//    @State var tftLeagueStats: [TFTLeagueStats]?
+    
+    @State var isSearched: Bool = false
     
     var body: some View {
-        VStack {
-            TextField(text: $inputText) {
-                Text("소환사 이름을 입력하세요.")
-            }
-            .textFieldStyle(.roundedBorder)
-            .padding()
-            Button {
-                Task {
-                    do {
-                        print(inputText.replacingOccurrences(of: " ", with: ""))
-                        summonerId = try await RiotAPIManager.shared.getSummonerID(summonerName: inputText, apiKey: apiKey2)
-                        print(summonerId ?? "id가 nil")
-                        let summonerLeagueEntry  = try await RiotAPIManager.shared.getTier(summonerId: summonerId ?? "", apiKey: apiKey2)
-                        tier = summonerLeagueEntry.first?.tier ?? "tier를 입력받지 못했습니다."
-                        rank = summonerLeagueEntry.first?.rank ?? "rank를 입력받지 못했습니다."
-                        wins = summonerLeagueEntry.first?.wins ?? 0
-                        losses = summonerLeagueEntry.first?.losses ?? 0
-                    } catch {
-                        print(error)
+        NavigationStack {
+            VStack {
+                HStack {
+                    TextField(text: ($summonerName)) {
+                        Text("소환사 이름을 입력하세요.")
                     }
+                    .textFieldStyle(.roundedBorder)
+                    searchButton()
                 }
-            } label: {
-                Text("validation")
-                    .padding()
             }
-            Text(tier)
-            Text(rank)
-            Text(String(describing: wins))
-            Text(String(describing: losses))
+            .padding()
+            .sheet(isPresented: $isSearched) {
+                SearchResultView(summonerName: $summonerName, summonerInfo: $summonerInfo, leagueInfo: $leagueInfo)
+            }
         }
-        .padding()
     }
     
-    //    func getSummonerWinRate(
+    func getSummonerWinRate(wins: Int, losses: Int) -> Double {
+        return Double(wins) / Double(wins + losses)
+    }
     
-    
-//    func printALot(text: String) {
-//        for _ in 1...10 {
-//            print(text)
-//        }
-//    }
-//    
-//    func printALotAsync(text: String) async {
-//        for _ in 1...10 {
-//            print(text)
-//        }
-//    }
+    func searchButton() -> some View {
+        Button {
+            Task {
+                do {
+                    let summonerId = try await RiotAPIManager.shared.getSummonerID(summonerName: summonerName, apiKey: apiKey2)
+                    let summonerLeagueEntry  = try await RiotAPIManager.shared.getTier(summonerId: summonerId , apiKey: apiKey2)
+                    let tier = summonerLeagueEntry.first?.tier ?? "tier를 입력받지 못했습니다."
+                    let rank = summonerLeagueEntry.first?.rank ?? "rank를 입력받지 못했습니다."
+                    
+                    let tftLeagueStats = try await RiotAPIManager.shared.getLeagueStats(tier: tier, rank: rank, apiKey: apiKey2)
+                    
+                    summonerInfo = RiotAPIManager.shared.getSummonerInfo(summonerLeagueEntry: summonerLeagueEntry)
+                    leagueInfo = RiotAPIManager.shared.getLeagueInfo(tftLeagueStats: tftLeagueStats)
+                    
+                    isSearched.toggle()
+                } catch {
+                    print(error)
+                }
+            }
+        } label: {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.gray)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.gray)
+                }
+        }
+    }
 }
 
 #Preview {
