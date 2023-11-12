@@ -52,7 +52,7 @@
 		98A2BC012AFBBDE3003C9835 /* TFTWhatIfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTWhatIfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2BC052AFBBDE3003C9835 /* TFTWhatIfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITests.swift; sourceTree = "<group>"; };
 		98A2BC072AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		98A2BC172AFBBF8F003C9835 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
+		98A2BC172AFBBF8F003C9835 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Secret.plist; path = ../../../../Downloads/Secret.plist; sourceTree = "<group>"; };
 		98A2BC192AFBBFF5003C9835 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		98A2BC1B2AFBC07E003C9835 /* SummonerLeagueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerLeagueEntry.swift; sourceTree = "<group>"; };
 		98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInfo.swift; sourceTree = "<group>"; };
