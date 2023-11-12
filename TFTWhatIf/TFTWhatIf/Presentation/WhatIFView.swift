@@ -7,24 +7,21 @@ struct WhatIFView: View {
     @State private var data1: [Topic] = [
         Topic(title: "23년 최저임금으로", timeSpent: 60, done: "원 벌기", count: 9620),
         Topic(title: "알고리즘", timeSpent: 45, done: "개 풀기", count: 1),
-        Topic(title: "수면", timeSpent: 480, done: "일 꿀잠", count: 1),
-        Topic(title: "책 일기", timeSpent: 240, done: "권", count: 1),
+        Topic(title: "걸어서 칼로리", timeSpent: 60, done: "소모", count: 256),
         Topic(title: "연애를 할 수 있는 횟수", timeSpent: 240, done: "회", count: 0),
         // 다른 주제 추가
     ]
     @State private var data2: [Topic] = [
-        Topic(title: "23년 최저임금으로", timeSpent: 60, done: "원 벌기", count: 9620),
-        Topic(title: "3분카레", timeSpent: 3, done: "개 제조", count: 1),
+        Topic(title: "코인 노래방", timeSpent: 4, done: "곡 부르기", count: 1),
+        Topic(title: "아카데미 세션", timeSpent: 240, done: "번 가기", count: 1),
         Topic(title: "수면", timeSpent: 480, done: "일 꿀잠", count: 1),
-        Topic(title: "책 일기", timeSpent: 240, done: "권", count: 1),
         Topic(title: "연애를 할 수 있는 횟수", timeSpent: 240, done: "회", count: 0),
         // 다른 주제 추가
     ]
     @State private var data3: [Topic] = [
-        Topic(title: "23년 최저임금으로", timeSpent: 60, done: "원 벌기", count: 9620),
-        Topic(title: "3분카레", timeSpent: 3, done: "개 제조", count: 1),
-        Topic(title: "수면", timeSpent: 480, done: "일 꿀잠", count: 1),
-        Topic(title: "책 일기", timeSpent: 240, done: "권", count: 1),
+        Topic(title: "코드", timeSpent: 3, done: "줄 작성", count: 1),
+        Topic(title: "학식", timeSpent: 45, done: "번 먹기", count: 1),
+        Topic(title: "책 읽기", timeSpent: 240, done: "권", count: 1),
         Topic(title: "연애를 할 수 있는 횟수", timeSpent: 240, done: "회", count: 0),
         // 다른 주제 추가
     ]
