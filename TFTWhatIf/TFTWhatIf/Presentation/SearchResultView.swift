@@ -12,8 +12,6 @@ struct SearchResultView: View {
     @Binding var summonerInfo: [SummonerInfoKey: Any]?
     @Binding var leagueInfo: [LeagueInfoKey: Any]?
     
-    @State var isSharing = false
-    @State var screenshot: UIImage? = nil
     @State var result = "재능충 66%"
     
     var body: some View {
@@ -62,9 +60,6 @@ struct SearchResultView: View {
             }
             .padding(.bottom, 40)
         }
-        .sheet(isPresented: $isSharing) {
-            ActivityView(activityItems: [screenshot])
-        }
     }
     
 }
@@ -84,9 +79,8 @@ extension SearchResultView {
             guard let window = UIApplication.shared.windows.first else { return }
             if let screenshot = takeScreenshot(of: window) {
                 if let croppedScreenshot = cropImage(screenshot, topTrim: 0.23, bottomTrim: 0.25) {
-                    self.screenshot = croppedScreenshot
-                    print("\(String(describing: self.screenshot))")
-                    self.isSharing = true
+                    let activityViewController = UIActivityViewController(activityItems: [croppedScreenshot], applicationActivities: nil)
+                    window.rootViewController?.present(activityViewController, animated: true)
                 }
             }
         }
@@ -118,14 +112,3 @@ extension SearchResultView {
 //    SearchResultView(.constant(<#T##value: String##String#>))
 //}
 
-struct ActivityView: UIViewControllerRepresentable {
-    var activityItems: [Any]
-    var applicationActivities: [UIActivity]? = nil
-    
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
-}
