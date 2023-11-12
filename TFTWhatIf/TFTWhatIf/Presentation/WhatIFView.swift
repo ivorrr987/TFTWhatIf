@@ -56,13 +56,16 @@ struct WhatIFView: View {
                     ForEach(selectedData) { topic in
                         VStack {
                             Text(topic.title)
+                                .foregroundStyle(.white)
                                 .font(.body)
                                 .padding(.bottom, 10)
                             HStack(spacing: 0) {
                                 Text("\(totalGameTime / topic.timeSpent * topic.count)")
+                                    .foregroundStyle(.white)
                                     .font(.title2)
                                     .bold()
                                 Text(topic.done)
+                                    .foregroundStyle(.white)
                                     .font(.title2)
                             }
                             
