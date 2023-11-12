@@ -20,133 +20,120 @@ struct SearchResultView: View {
 
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Text("\(summonerName)의 판별 결과는")
-                .font(.headline)
-                .foregroundColor(.gray)
-                .padding(8)
-            if let summonerWinRate = summonerInfo?[.winRate] as? Double, let totalWinRate = leagueInfo?[.totalWinRate] as? Double {
-                if summonerWinRate >= totalWinRate {
-                    Text("재능충")
-                        .font(.title2)
-                        .foregroundColor(.green)
-                }else {
-                    Text("노력충")
-                        .font(.title2)
-                        .foregroundColor(.red)
+        ZStack{
+            VStack {
+                Spacer()
+                
+                Text("\(summonerName)의 판별 결과는")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .padding(8)
+                if let summonerWinRate = summonerInfo?[.winRate] as? Double, let totalWinRate = leagueInfo?[.totalWinRate] as? Double {
+                    if summonerWinRate >= totalWinRate {
+                        Text("재능충")
+                            .font(.title2)
+                            .foregroundColor(.green)
+                    }else {
+                        Text("노력충")
+                            .font(.title2)
+                            .foregroundColor(.red)
+                    }
                 }
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.gray)
+                    .padding()
+                
+                VStack(alignment: .center, spacing: 16) {
+                    Text("소환사 이름: \(summonerName)")
+                        .foregroundColor(.gray)
+                    
+                    if let tier = summonerInfo?[.tier] as? String {
+                        Text("티어: \(tier)")
+                            .foregroundColor(.gray)
+                    } else {
+                        Text("티어: 기본값") // tier 값이 존재하지 않을 때 기본값을 사용
+                            .foregroundColor(.gray)
+                    }
+
+                    if let rank = summonerInfo?[.rank] as? String {
+                        Text("랭크: \(rank)")
+                            .foregroundColor(.gray)
+                    } else {
+                        Text("랭크: 기본값") // rank 값이 존재하지 않을 때 기본값을 사용
+                            .foregroundColor(.gray)
+                    }
+
+                    
+                    Text("승률: \(String(format: "%0.3f", summonerInfo?[.winRate] as! CVarArg))")
+                        .foregroundColor(.gray)
+                    
+                    Text("같은 티어 전체 승률: \(String(format: "%0.3f",  leagueInfo?[.totalWinRate] as! CVarArg))")
+                        .foregroundColor(.gray)
+                    
+                    if let winRate = summonerInfo?[.winRate] as? Double, let wins = summonerInfo?[.wins] as? Int, let losses = summonerInfo?[.losses] as? Int {
+                        let totalGames = wins + losses
+                        let gameTime = 30 + 10 * winRate
+                        let totalGameTimes = totalGames * Int(gameTime)
+                        
+
+
+                        Text("전체 게임 시간: \(((totalGames) * Int(gameTime)) / 60)시간")
+                            .foregroundColor(.gray)
+                        Text("전체 게임 수: \(totalGames)")
+                            .foregroundColor(.gray)
+                        Text("한 게임 평균 시간: \(gameTime)")
+                            .foregroundColor(.gray)
+                    } else {
+                        // 승률, 승리 및 패배 횟수를 가져오는 데 실패한 경우의 처리를 수행할 수 있습니다.
+                    }
+
+                }
+                .padding(30)
+                .background {
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.gray, lineWidth: 2)
+                }
+                
+                NavigationLink {
+                    WhatIFView(totalGameTime: $totalGameTime)
+                } label: {
+                    VStack {
+                        
+                        Text("만약 롤체를 안 했더라면...")
+                            .padding()
+                            .padding()
+                        
+                    }
+                    .background {
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.gray, lineWidth: 2)
+                    }
+                }
+                .padding(.top, 30)
+
+                Spacer()
             }
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(.gray)
-                .padding()
-            
-            VStack(alignment: .center, spacing: 16) {
-                Text("소환사 이름: \(summonerName)")
-                
-                if let tier = summonerInfo?[.tier] as? String {
-                    Text("티어: \(tier)")
-                } else {
-                    Text("티어: 기본값") // tier 값이 존재하지 않을 때 기본값을 사용
-                }
-
-                if let rank = summonerInfo?[.rank] as? String {
-                    Text("랭크: \(rank)")
-                } else {
-                    Text("랭크: 기본값") // rank 값이 존재하지 않을 때 기본값을 사용
-                }
-
-                
-                Text("승률: \(String(format: "%0.3f", summonerInfo?[.winRate] as! CVarArg))")
-                
-                Text("같은 티어 전체 승률: \(String(format: "%0.3f",  leagueInfo?[.totalWinRate] as! CVarArg))")
-                
+            .onAppear {
                 if let winRate = summonerInfo?[.winRate] as? Double, let wins = summonerInfo?[.wins] as? Int, let losses = summonerInfo?[.losses] as? Int {
                     let totalGames = wins + losses
                     let gameTime = 30 + 10 * winRate
-                    let totalGameTimes = totalGames * Int(gameTime)
-                    
-
-
-                    Text("전체 게임 시간: \(((totalGames) * Int(gameTime)) / 60)시간")
-                    Text("전체 게임 수: \(totalGames)")
-                    Text("한 게임 평균 시간: \(gameTime)")
-                } else {
-                    // 승률, 승리 및 패배 횟수를 가져오는 데 실패한 경우의 처리를 수행할 수 있습니다.
-                }
-
-            }
-            .padding(30)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.gray, lineWidth: 2)
-            }
-            
-//            Button {
-//                isIf.toggle()
-//            } label: {
-//                VStack {
-//                    
-//                    Text("만약 롤체를 안 했더라면...")
-//                        .padding()
-//                    
-//                }
-//                .background {
-//                    RoundedRectangle(cornerRadius: 6)
-//                        .stroke(Color.gray, lineWidth: 2)
-//                }
-//                
-//            }
-//            .buttonStyle(.borderless)
-//            .padding(.top, 30)
-            
-            NavigationLink {
-                WhatIFView(totalGameTime: $totalGameTime)
-            } label: {
-                VStack {
-                    
-                    Text("만약 롤체를 안 했더라면...")
-                        .padding()
-                    
-                }
-                .background {
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.gray, lineWidth: 2)
+                    totalGameTime = totalGames * Int(gameTime)
                 }
             }
-            .padding(.top, 30)
+            .toolbar(content: {
+                Button {
+                    takeScreenshotAndShare()
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
 
-            Spacer()
+            })
         }
-        .onAppear {
-            if let winRate = summonerInfo?[.winRate] as? Double, let wins = summonerInfo?[.wins] as? Int, let losses = summonerInfo?[.losses] as? Int {
-                let totalGames = wins + losses
-                let gameTime = 30 + 10 * winRate
-                totalGameTime = totalGames * Int(gameTime) / 60
-            }
-        }
-        .toolbar(content: {
-            Button {
-                takeScreenshotAndShare()
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-//                    .resizable()
-//                    .frame(width: 40, height: 40)
-//                    .foregroundColor(.gray)
-            }
+        .background(.black)
 
-//            .padding(.bottom, 40)
-        })
-//        .fullScreenCover(isPresented: $isIf) {
-//            WhatIFView(totalGameTime: $totalGameTime)
-//        }
-        .sheet(isPresented: $isSharing) {
-            ActivityView(activityItems: [screenshot])
-
-        }
     }
+    
     
 }
 
