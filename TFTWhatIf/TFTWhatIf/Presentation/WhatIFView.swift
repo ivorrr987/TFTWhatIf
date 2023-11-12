@@ -37,55 +37,67 @@ struct WhatIFView: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                Spacer()
-                Section {
-                    HStack {
-                        Text("롤체를 안 했더라면...")
-                            .font(.title2)
-                        Spacer()
-                    }
-                    Divider()
-                }
-                ForEach(selectedData) { topic in
-                    VStack {
-                        Text(topic.title)
-                            .font(.callout)
-                        HStack(spacing: 0) {
-                            Text("\(totalGameTime / topic.timeSpent * topic.count)")
-                                .font(.headline)
-                            Text(topic.done)
-                                .font(.headline)
+        ZStack{
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    Spacer()
+                    Section {
+                        HStack {
+                            Text("롤체를 안 했더라면...")
+                                .font(.title3)
+                                .foregroundStyle(.gray)
+                            Spacer()
                         }
-                        
+                        Rectangle()
+                            .frame(height: 0.5)
+                            .foregroundColor(.gray)
+                         
                     }
-                    .frame(width: 300, height: 120)
-                    .background(.gray)
-                    .cornerRadius(5)
-                    .shadow(color: Color.black.opacity(0.2), radius: 4)
+                    ForEach(selectedData) { topic in
+                        VStack {
+                            Text(topic.title)
+                                .font(.body)
+                                .padding(.bottom, 10)
+                            HStack(spacing: 0) {
+                                Text("\(totalGameTime / topic.timeSpent * topic.count)")
+                                    .font(.title2)
+                                    .bold()
+                                Text(topic.done)
+                                    .font(.title2)
+                            }
+                            
+                        }
+                        .frame(width: 300, height: 120)
+                        .background(.gray)
+                        .cornerRadius(5)
+                        .shadow(color: Color.black.opacity(0.2), radius: 4)
+                    }
+                    Button(action: {
+                        switch selectedData {
+                        case data1:
+                            selectedData = data2
+                        case data2:
+                            selectedData = data3
+                        default:
+                            selectedData = data1
+                        }
+                    }, label: {
+                        VStack {
+                            Text("새로운 컨텐츠 보기")
+                                .font(.title2)
+                                
+                        }
+                        .frame(width: 300, height: 120)
+                        .background(.white)
+                        .cornerRadius(5)
+                        .shadow(color: Color.black.opacity(0.2), radius: 4)
+                    })
                 }
-                Button(action: {
-                    switch selectedData {
-                    case data1:
-                        selectedData = data2
-                    case data2:
-                        selectedData = data3
-                    default:
-                        selectedData = data1
-                    }
-                }, label: {
-                    VStack {
-                        Text("새로운 컨텐츠 보기")
-                    }
-                    .frame(width: 300, height: 120)
-                    .background(.white)
-                    .cornerRadius(5)
-                    .shadow(color: Color.black.opacity(0.2), radius: 4)
-                })
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
         }
+        .background(.black)
+        
     }
 }
 

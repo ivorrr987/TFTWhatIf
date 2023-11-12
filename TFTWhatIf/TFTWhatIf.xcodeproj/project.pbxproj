@@ -21,9 +21,9 @@
 		98A2BC232AFBC262003C9835 /* RiotAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC222AFBC262003C9835 /* RiotAPIManager.swift */; };
 		98A2BC252AFBD655003C9835 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC242AFBD655003C9835 /* String+Extension.swift */; };
 		98A2BC272AFCB126003C9835 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC262AFCB126003C9835 /* SearchResultView.swift */; };
-		A90819122B00F7AD0020462C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90819112B00F7AD0020462C /* Secret.plist */; };
 		A90819152B0103B70020462C /* WhatIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90819142B0103B70020462C /* WhatIFView.swift */; };
 		A90819172B0128430020462C /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90819162B0128430020462C /* Topic.swift */; };
+		A90819192B0134430020462C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90819182B0134430020462C /* Secret.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +62,9 @@
 		98A2BC222AFBC262003C9835 /* RiotAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiotAPIManager.swift; sourceTree = "<group>"; };
 		98A2BC242AFBD655003C9835 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		98A2BC262AFCB126003C9835 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
-		A90819112B00F7AD0020462C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		A90819142B0103B70020462C /* WhatIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIFView.swift; sourceTree = "<group>"; };
 		A90819162B0128430020462C /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		A90819182B0134430020462C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				98A2BBEA2AFBBDE1003C9835 /* TFTWhatIfApp.swift */,
-				A90819112B00F7AD0020462C /* Secret.plist */,
 				98A2BBEE2AFBBDE3003C9835 /* Assets.xcassets */,
 				98A2BC172AFBBF8F003C9835 /* Secret.plist */,
 				98A2BC162AFBBED7003C9835 /* Extension */,
@@ -124,6 +123,7 @@
 				98A2BC212AFBC225003C9835 /* Manager */,
 				98A2BC142AFBBE81003C9835 /* Presentation */,
 				98A2BBF02AFBBDE3003C9835 /* Preview Content */,
+				A90819182B0134430020462C /* Secret.plist */,
 			);
 			path = TFTWhatIf;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90819122B00F7AD0020462C /* Secret.plist in Resources */,
+				A90819192B0134430020462C /* Secret.plist in Resources */,
 				98A2BBF22AFBBDE3003C9835 /* Preview Assets.xcassets in Resources */,
 				98A2BBEF2AFBBDE3003C9835 /* Assets.xcassets in Resources */,
 			);

@@ -19,68 +19,83 @@ struct ContentView: View {
     @State var summonerInfo: [SummonerInfoKey: Any]?
     @State var leagueInfo: [LeagueInfoKey: Any]?
     
-//    @State var summonerLeagueEntry: [SummonerLeagueEntry]?
-//    @State var tier: String = "아직 입력되지 않았습니다."
-//    @State var rank: String = "아직 입력되지 않았습니다."
-//    @State var wins: Int?
-//    @State var losses: Int?
-//
-//    @State var tftLeagueStats: [TFTLeagueStats]?
+    //    @State var summonerLeagueEntry: [SummonerLeagueEntry]?
+    //    @State var tier: String = "아직 입력되지 않았습니다."
+    //    @State var rank: String = "아직 입력되지 않았습니다."
+    //    @State var wins: Int?
+    //    @State var losses: Int?
+    //
+    //    @State var tftLeagueStats: [TFTLeagueStats]?
     
     @State var isSearched: Bool = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Text("나는 게임에 재능이 있을까?")
-                .font(.title)
-                .bold()
-                .foregroundColor(.gray)
+        ZStack{
+            VStack {
+                Spacer()
+                
+                HStack(spacing: 0) {
+                    Text("나는 게임에 ")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.gray)
+                    Text("재능")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.green)
+                    Text("이 있을까?")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.gray)
+                }
+                .padding(.bottom, 106)
+    
+                
+                
+                HStack {
+                    TextField(text: ($summonerName)) {
+                        Text("소환사 이름을 입력하세요.")
+                            .foregroundColor(.gray)
+                    }
+                    .onSubmit { fetchID() }
+                    .foregroundColor(.gray)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    }
+                    
+                    Button(action: {
+                        self.summonerName = ""
+                    }) {
+                        Image(systemName: "x.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.leading, -40)
+                    .opacity(summonerName.isEmpty ? 0 : 1)
+                    .animation(.easeInOut, value: summonerName.isEmpty)
+                    searchButton()
+                } // HStack
                 .padding(.bottom, 106)
                 
-            
-            HStack {
-                TextField(text: ($summonerName)) {
-                    Text("소환사 이름을 입력하세요.")
-                        .foregroundColor(.gray)
-                }
-                .onSubmit { fetchID() }
-                .foregroundColor(.gray)
-                .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray, lineWidth: 1)
-                }
+                Text("아이디 찾기 오류 !")
+                    .foregroundColor(.red)
+                    .opacity(!isValid ? 0 : 1)
+                    .animation(.easeInOut, value: isValid)
                 
-                Button(action: {
-                    self.summonerName = ""
-                }) {
-                    Image(systemName: "x.circle.fill")
-                        .foregroundColor(.gray)
-                }
-                .padding(.leading, -40)
-                .opacity(summonerName.isEmpty ? 0 : 1)
-                .animation(.easeInOut, value: summonerName.isEmpty)
-                searchButton()
-            } // HStack
-            .padding(.bottom, 106)
+                Spacer()
+            }
             
-            Text("아이디 찾기 오류 !")
-                .foregroundColor(.red)
-                .opacity(!isValid ? 0 : 1)
-                .animation(.easeInOut, value: isValid)
-            
-            Spacer()
-        }
-        .padding()
+            .padding()}
+        .background(.black)
+        
         
         NavigationLink(isActive: $isSearched) {
             SearchResultView(summonerName: $summonerName, summonerInfo: $summonerInfo, leagueInfo: $leagueInfo)
         } label: {
             
         }
-
+        
         
     }
     
