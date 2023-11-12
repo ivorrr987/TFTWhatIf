@@ -33,11 +33,12 @@ struct ContentView: View {
         VStack {
             Spacer()
             
-            Text("Title")
+            Text("나는 게임에 재능이 있을까?")
                 .font(.title)
                 .bold()
                 .foregroundColor(.gray)
-                .padding(.bottom, 16)
+                .padding(.bottom, 106)
+                
             
             HStack {
                 TextField(text: ($summonerName)) {
@@ -63,7 +64,7 @@ struct ContentView: View {
                 .animation(.easeInOut, value: summonerName.isEmpty)
                 searchButton()
             } // HStack
-            .padding(.bottom, 16)
+            .padding(.bottom, 106)
             
             Text("아이디 찾기 오류 !")
                 .foregroundColor(.red)
