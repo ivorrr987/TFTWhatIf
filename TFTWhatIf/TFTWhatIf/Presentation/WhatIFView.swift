@@ -98,11 +98,68 @@ struct WhatIFView: View {
                 }
                 .padding(.horizontal)
             }
+            
         }
+        .toolbar(content: {
+            Button {
+                takeScreenshotAndShare()
+            } label: {
+                Image(systemName: "square.and.arrow.up")
+            }
+
+        })
         .background(.black)
         
     }
+    
+    
 }
+
+extension WhatIFView {
+    private func takeScreenshot(of view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        view.layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    private func takeScreenshotAndShare() {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.windows.first else { return }
+            if let screenshot = takeScreenshot(of: window) {
+                if let croppedScreenshot = cropImage(screenshot, topTrim: 0.11, bottomTrim: 0.13) {
+                    let activityViewController = UIActivityViewController(activityItems: [croppedScreenshot], applicationActivities: nil)
+                    window.rootViewController?.present(activityViewController, animated: true)
+                }
+            }
+        }
+    }
+    
+    private func cropImage(_ image: UIImage, topTrim: CGFloat, bottomTrim: CGFloat) -> UIImage? {
+        let totalTrimAmount = topTrim + bottomTrim
+        guard totalTrimAmount < 1 else { return nil }
+        
+        let size = image.size
+        let rect = CGRect(
+            x: 0,
+            y: size.height * topTrim,
+            width: size.width,
+            height: size.height * (1 - totalTrimAmount)
+        )
+        
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, image.scale)
+        image.draw(at: CGPoint(x: -rect.origin.x, y: -rect.origin.y))
+        let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return croppedImage
+    }
+    
+}
+
+
 
 #Preview {
     WhatIFView(totalGameTime: .constant(1000))
