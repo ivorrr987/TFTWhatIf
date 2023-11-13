@@ -151,7 +151,7 @@ extension SearchResultView {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.windows.first else { return }
             if let screenshot = takeScreenshot(of: window) {
-                if let croppedScreenshot = cropImage(screenshot, topTrim: 0.23, bottomTrim: 0.25) {
+                if let croppedScreenshot = cropImage(screenshot, topTrim: 0.15, bottomTrim: 0.25) {
                     let activityViewController = UIActivityViewController(activityItems: [croppedScreenshot], applicationActivities: nil)
                     window.rootViewController?.present(activityViewController, animated: true)
                 }
