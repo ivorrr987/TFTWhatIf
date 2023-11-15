@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9871B1E82B04EF3500C5840A /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9871B1E72B04EF3500C5840A /* Secret.plist */; };
 		98A2BBEB2AFBBDE1003C9835 /* TFTWhatIfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BBEA2AFBBDE1003C9835 /* TFTWhatIfApp.swift */; };
 		98A2BBED2AFBBDE1003C9835 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BBEC2AFBBDE1003C9835 /* ContentView.swift */; };
 		98A2BBEF2AFBBDE3003C9835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A2BBEE2AFBBDE3003C9835 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9871B1E72B04EF3500C5840A /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		98A2BBE72AFBBDE1003C9835 /* TFTWhatIf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFTWhatIf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2BBEA2AFBBDE1003C9835 /* TFTWhatIfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfApp.swift; sourceTree = "<group>"; };
 		98A2BBEC2AFBBDE1003C9835 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,7 +56,6 @@
 		98A2BC012AFBBDE3003C9835 /* TFTWhatIfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTWhatIfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2BC052AFBBDE3003C9835 /* TFTWhatIfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITests.swift; sourceTree = "<group>"; };
 		98A2BC072AFBBDE3003C9835 /* TFTWhatIfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTWhatIfUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		98A2BC172AFBBF8F003C9835 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Secret.plist; path = ../../../../Downloads/Secret.plist; sourceTree = "<group>"; };
 		98A2BC192AFBBFF5003C9835 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		98A2BC1B2AFBC07E003C9835 /* SummonerLeagueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerLeagueEntry.swift; sourceTree = "<group>"; };
 		98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInfo.swift; sourceTree = "<group>"; };
@@ -117,7 +118,7 @@
 			children = (
 				98A2BBEA2AFBBDE1003C9835 /* TFTWhatIfApp.swift */,
 				98A2BBEE2AFBBDE3003C9835 /* Assets.xcassets */,
-				98A2BC172AFBBF8F003C9835 /* Secret.plist */,
+				9871B1E72B04EF3500C5840A /* Secret.plist */,
 				98A2BC162AFBBED7003C9835 /* Extension */,
 				98A2BC152AFBBEC0003C9835 /* Model */,
 				98A2BC212AFBC225003C9835 /* Manager */,
@@ -295,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9871B1E82B04EF3500C5840A /* Secret.plist in Resources */,
 				A9FDCCE02B02456400BFF5A9 /* Secret.plist in Resources */,
 				98A2BBF22AFBBDE3003C9835 /* Preview Assets.xcassets in Resources */,
 				98A2BBEF2AFBBDE3003C9835 /* Assets.xcassets in Resources */,
@@ -496,7 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TFTWhatIf/Preview Content\"";
-				DEVELOPMENT_TEAM = V59QA8T54G;
+				DEVELOPMENT_TEAM = 662HVTXJ55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -526,7 +528,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TFTWhatIf/Preview Content\"";
-				DEVELOPMENT_TEAM = V59QA8T54G;
+				DEVELOPMENT_TEAM = 662HVTXJ55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
