@@ -24,6 +24,7 @@
 		98A2BC272AFCB126003C9835 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2BC262AFCB126003C9835 /* SearchResultView.swift */; };
 		A90819152B0103B70020462C /* WhatIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90819142B0103B70020462C /* WhatIFView.swift */; };
 		A90819172B0128430020462C /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90819162B0128430020462C /* Topic.swift */; };
+		A9DB25D72B08943E00C63CA3 /* LeagueListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB25D62B08943E00C63CA3 /* LeagueListDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		98A2BC262AFCB126003C9835 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		A90819142B0103B70020462C /* WhatIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIFView.swift; sourceTree = "<group>"; };
 		A90819162B0128430020462C /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		A9DB25D62B08943E00C63CA3 /* LeagueListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueListDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				98A2BC1D2AFBC09F003C9835 /* SummonerInfo.swift */,
 				98A2BC1F2AFBC0B9003C9835 /* TFTLeagueStats.swift */,
 				A90819162B0128430020462C /* Topic.swift */,
+				A9DB25D62B08943E00C63CA3 /* LeagueListDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				98A2BC202AFBC0B9003C9835 /* TFTLeagueStats.swift in Sources */,
 				98A2BC1E2AFBC09F003C9835 /* SummonerInfo.swift in Sources */,
 				A90819152B0103B70020462C /* WhatIFView.swift in Sources */,
+				A9DB25D72B08943E00C63CA3 /* LeagueListDTO.swift in Sources */,
 				98A2BC1A2AFBBFF5003C9835 /* Bundle+Extension.swift in Sources */,
 				98A2BBEB2AFBBDE1003C9835 /* TFTWhatIfApp.swift in Sources */,
 				98A2BC232AFBC262003C9835 /* RiotAPIManager.swift in Sources */,

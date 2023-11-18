@@ -128,10 +128,21 @@ extension ContentView {
                 let tier = summonerLeagueEntry.first?.tier ?? "tier를 입력받지 못했습니다."
                 let rank = summonerLeagueEntry.first?.rank ?? "rank를 입력받지 못했습니다."
                 
-                let tftLeagueStats = try await RiotAPIManager.shared.getLeagueStats(tier: tier, rank: rank, apiKey: apiKey2)
+                if ["MASTER", "GRANDMASTER", "CHALLENGER"].contains(tier) {
+                    let tftHighLeagueStats = try await RiotAPIManager.shared.getHighLeagueStats(tier: tier, apiKey: apiKey2)
+                    summonerInfo = RiotAPIManager.shared.getSummonerInfo(summonerLeagueEntry: summonerLeagueEntry)
+                    leagueInfo = RiotAPIManager.shared.getHighLeagueInfo(leagueListDTO: tftHighLeagueStats)
+                } else {
+                    let tftLeagueStats = try await RiotAPIManager.shared.getLeagueStats(tier: tier, rank: rank, apiKey: apiKey2)
+                    
+                    summonerInfo = RiotAPIManager.shared.getSummonerInfo(summonerLeagueEntry: summonerLeagueEntry)
+                    leagueInfo = RiotAPIManager.shared.getLeagueInfo(tftLeagueStats: tftLeagueStats)
+                }
+
+
                 
-                summonerInfo = RiotAPIManager.shared.getSummonerInfo(summonerLeagueEntry: summonerLeagueEntry)
-                leagueInfo = RiotAPIManager.shared.getLeagueInfo(tftLeagueStats: tftLeagueStats)
+                
+                
                 
                 isSearched.toggle()
                 isValid = false

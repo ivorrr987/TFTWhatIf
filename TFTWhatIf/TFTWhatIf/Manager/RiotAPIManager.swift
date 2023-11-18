@@ -94,6 +94,24 @@ extension RiotAPIManager {
         let result = try JSONDecoder().decode([TFTLeagueStats].self, from: responseData)
         return result
     }
+    
+    func getHighLeagueStats(tier: String, apiKey: String) async throws ->
+    LeagueListDTO {
+        let urlQuery = "https://kr.api.riotgames.com/tft/league/v1/\(tier.lowercased())?queue=RANKED_TFT&api_key=\(apiKey)"
+        
+
+        guard let url = URL(string: urlQuery) else {
+            print("-----bad URL!-----")
+            throw RiotAPIError.badURL
+        }
+
+        let request = URLRequest(url: url)
+        let (responseData, response) = try await URLSession.shared.data(for: request)
+        print("getMasterTierSummoners's response: \(response)")
+
+        let result = try JSONDecoder().decode(LeagueListDTO.self, from: responseData)
+        return result
+    }
 }
 
 
@@ -136,6 +154,26 @@ extension RiotAPIManager {
         
         let totalWins: Double = Double(tftLeagueStats?.reduce(0, { $0 + $1.wins }) ?? 0)
         let totalLosses: Double = Double(tftLeagueStats?.reduce(0, { $0 + $1.losses }) ?? 1)
+        
+        return totalWins / (totalWins + totalLosses)
+    }
+    
+    func getHighLeagueInfo(leagueListDTO: LeagueListDTO?) -> [LeagueInfoKey: Any] {
+        let totalWins = leagueListDTO?.entries.first?.wins ?? 0
+        let totalLosses = leagueListDTO?.entries.first?.losses ?? 1
+        
+        let result: [LeagueInfoKey: Any] = [
+            .totalWins: totalWins,
+            .totalLosses: totalLosses,
+            .totalWinRate: getHighTotalWinRate(leagueListDTO: leagueListDTO)
+        ]
+        
+        return result
+    }
+
+    func getHighTotalWinRate(leagueListDTO: LeagueListDTO?) -> Double {
+        let totalWins: Double = Double(leagueListDTO?.entries.reduce(0, { $0 + $1.wins }) ?? 0)
+        let totalLosses: Double = Double(leagueListDTO?.entries.reduce(0, { $0 + $1.losses }) ?? 1)
         
         return totalWins / (totalWins + totalLosses)
     }
